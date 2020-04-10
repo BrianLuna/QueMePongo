@@ -5,11 +5,11 @@ public class TipoDePrenda {
     private CategoriaDePrenda categoria;
 
     TipoDePrenda(CategoriaDePrenda _categoriaDePrenda) {
-        this.categoria = _categoriaDePrenda;
+        categoria = _categoriaDePrenda;
     }
 
-    public boolean correspondeCategoria(CategoriaDePrenda unaCategoria){
-        return categoria == unaCategoria;
+    public CategoriaDePrenda getCategoria(){
+        return categoria;
     }
 
 }
