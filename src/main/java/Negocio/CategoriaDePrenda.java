@@ -1,8 +1,8 @@
 package Negocio;
 
 public enum CategoriaDePrenda {
-    PARTE_SUPERIOR,
-    PARTE_INFERIOR,
+    PARTESUPERIOR,
+    PARTEINFERIOR,
     CALZADO,
     ACCESORIOS
 }

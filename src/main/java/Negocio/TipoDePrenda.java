@@ -1,15 +1,13 @@
 package Negocio;
 
 public class TipoDePrenda {
-
     private CategoriaDePrenda categoria;
 
-    TipoDePrenda(CategoriaDePrenda _categoriaDePrenda) {
-        categoria = _categoriaDePrenda;
+    public TipoDePrenda(CategoriaDePrenda categoria){
+        this.categoria = categoria;
     }
 
-    public CategoriaDePrenda getCategoria(){
+    public CategoriaDePrenda getCategoria() {
         return categoria;
     }
-
 }
