@@ -1,7 +1,7 @@
 package Negocio;
 
 public class Color {
-    int rojo, verde, azul;
+    Integer rojo, verde, azul;
 
     public Color(int rojo, int verde, int azul){
         this.rojo = rojo;

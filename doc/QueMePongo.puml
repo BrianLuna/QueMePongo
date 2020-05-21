@@ -1,0 +1,106 @@
+@startuml
+
+together {
+class Uniforme
+class Prenda
+class PrendaBuilder
+class Ayuda
+}
+
+Uniforme "*" -> "1" Prenda
+Uniforme "*" -> "1" Prenda
+Uniforme "*" -> "1" Prenda
+Uniforme ..> Sastre
+SastreSanJuan ..|> Sastre
+SastreInstitutoJohnson ..|> Sastre
+Sastre -[hidden]--> SastreSanJuan
+Sastre -[hidden]--> SastreInstitutoJohnson
+PrendaBuilder ..> Prenda
+PrendaBuilder -[hidden]--> Ayuda
+Prenda "*" --> "1" Color
+Prenda "*" --> "1" Color
+Prenda "*" --> "1" Trama
+Prenda "*" --> "1" Material
+Prenda "*" --> "1" TipoDePrenda
+PrendaBuilder "*" --> "1" Color
+PrendaBuilder "*" --> "1" Color
+PrendaBuilder "*" --> "1" Trama
+PrendaBuilder "*" --> "1" Material
+PrendaBuilder "*" --> "1" TipoDePrenda
+TipoDePrenda "*" --> "1" CategoriaDePrenda
+hide Ayuda
+
+interface Sastre {
+    +fabricarPrendaSuperior() : Prenda
+    +fabricarPrendaInferior() : Prenda
+    +fabricarCalzado() : Prenda
+}
+
+class SastreSanJuan
+
+class SastreInstitutoJohnson
+
+class Uniforme {
+    -prendaSuperior : Prenda
+    -prendaInferior : Prenda
+    -calzado : Prenda
+
+    +{static} fabricar() : Uniforme
+}
+
+class PrendaBuilder {
+    -tipoDePrenda : TipoDePrenda
+    -material : Material
+    -colorPrimario : Color
+    -colorSecundario : Color
+    -trama : Trama
+
+    +cargarTipo(TipoDePrenda tipoDePrenda) : void
+    +cargarMaterial() : void
+    +cargarColorPrimario() : void
+    +cargarColorSecundario() : void
+    +cargarTrama() : void
+    +confirmarPrenda() : Prenda
+}
+
+class Prenda {
+    -tipoDePrenda TipoDePrenda
+    -material : Material
+    -colorPrimario : Color
+    -colorSecundario : Color
+    -trama : Trama
+
+    +categoriaDePrenda() : CategoriaDePrenda
+}
+
+class TipoDePrenda {
+    -categoria : CategoriaDePrenda
+}
+
+enum CategoriaDePrenda {
+    +PARTESUPERIOR
+    +PARTEINFERIOR
+    +CALZADO
+    +ACCESORIOS
+}
+
+enum Material {
+    +ALGODON
+    +JEAN
+}
+
+class Color {
+    -rojo : Integer
+    -verde : Integer
+    -azul : Integer
+}
+
+class Trama {
+    +LISA
+    +RAYADA
+    +CON_LUNARES
+    +A_CUADROS
+    +ESTAMPADO
+}
+
+@enduml

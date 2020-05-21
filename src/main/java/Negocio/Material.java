@@ -2,5 +2,10 @@ package Negocio;
 
 public enum Material {
     ALGODON,
-    JEAN
+    JEAN,
+    PIQUE,
+    ACETATO,
+    LONA,
+    TELA,
+    CUERO;
 }

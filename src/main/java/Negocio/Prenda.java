@@ -1,13 +1,11 @@
 package Negocio;
 
-import Excepciones.FaltaParametroException;
-
 public class Prenda {
-    private TipoDePrenda tipoDePrenda;
-    private Material material;
-    private Color colorPrimario;
-    private Color colorSecundario;
-    private Trama trama;
+    private final TipoDePrenda tipoDePrenda;
+    private final Material material;
+    private final Color colorPrimario;
+    private final Color colorSecundario;
+    private final Trama trama;
 
     public Prenda(TipoDePrenda tipoDePrenda, Material material, Color colorPrimario, Color colorSecundario, Trama trama){
         this.tipoDePrenda = tipoDePrenda;

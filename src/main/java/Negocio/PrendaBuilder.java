@@ -2,27 +2,27 @@ package Negocio;
 
 import Excepciones.FaltaParametroException;
 
-public class PrendaBorrador {
+import static java.util.Objects.requireNonNull;
+
+public class PrendaBuilder {
 
     private TipoDePrenda tipoDePrenda;
     private Material material;
     private Color colorPrimario;
     private Color colorSecundario;
-    private Trama trama = Trama.LISA;
+    private Trama trama;
 
-    public void cargarTipo(TipoDePrenda tipoDePrenda){
-        if (tipoDePrenda == null) throw new FaltaParametroException("Es requerido ingresar el Tipo de prenda");
-        this.tipoDePrenda = tipoDePrenda;
+    public PrendaBuilder(TipoDePrenda tipoDePrenda){
+        this.tipoDePrenda = requireNonNull(tipoDePrenda, "Es requerido ingresar el tipo de prenda");
+        this.trama = Trama.LISA;
     }
 
     public void cargarMaterial(Material material){
-        if (material == null) throw new FaltaParametroException("Es requerido ingresar la tela o material");
-        this.material = material;
+        this.material = requireNonNull(material, "Es requerido ingresar la tela o material");
     }
 
     public void cargarColorPrimario(Color colorPrimario){
-        if (colorPrimario == null) throw new FaltaParametroException("Es requerido ingresar el Color primario");
-        this.colorPrimario = colorPrimario;
+        this.colorPrimario = requireNonNull(colorPrimario, "Es requerido ingresar el Color primario");
     }
 
     public void cargarColorSecundario(Color colorSecundario){
