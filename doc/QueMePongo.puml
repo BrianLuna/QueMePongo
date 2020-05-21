@@ -28,6 +28,13 @@ PrendaBuilder "*" --> "1" Trama
 PrendaBuilder "*" --> "1" Material
 PrendaBuilder "*" --> "1" TipoDePrenda
 TipoDePrenda "*" --> "1" CategoriaDePrenda
+TipoDePrenda "1" --> "1" Temperatura
+CategoriaDePrenda -[hidden]--> UnidadDeTemperatura
+Ropero "*" --> "*" Prenda
+Ropero ..> Uniforme
+Ropero "*" --> "1" CondicionesClimaticas
+CondicionesClimaticas "*" -> "1" AccuWeatherAPI
+Temperatura "*" -> "1" UnidadDeTemperatura
 hide Ayuda
 
 interface Sastre {
@@ -36,9 +43,24 @@ interface Sastre {
     +fabricarCalzado() : Prenda
 }
 
-class SastreSanJuan
+class SastreSanJuan {
+    -CHOMBA : TipoDePrenda
+    -PANTALON : TipoDePrenda
+    -ZAPATILLAS : TipoDePrenda
+}
 
-class SastreInstitutoJohnson
+class SastreInstitutoJohnson {
+    -CAMISA : TipoDePrenda
+    -PANTALON : TipoDePrenda
+    -ZAPATOS : TipoDePrenda
+}
+
+class Ropero {
+    -prendas : Set<Prenda>
+    -condicionesClimaticas : CondicionesClimaticas
+
+    +obtenerSugerencia() : Set<Uniforme>
+}
 
 class Uniforme {
     -prendaSuperior : Prenda
@@ -75,6 +97,39 @@ class Prenda {
 
 class TipoDePrenda {
     -categoria : CategoriaDePrenda
+
+    +sePuedeUsarConTemperatura : Boolean
+}
+
+class Temperatura {
+    -valor;
+    -unidadDeTemperatura UnidadDeTemperatura;
+
+    +cambiarUnidad() : BigDecimal
+    +esMayorA() : Boolean
+}
+
+enum UnidadDeTemperatura {
+    +F.
+    +C.
+
+    +{abstract}cambiarUnidad() : BigDecimal;
+
+}
+
+class AccuWeatherAPI {
+    +getWeather() : List<Map<String, Object>>
+}
+
+class CondicionesClimaticas {
+    -servicioDeClima : AccuWeatherAPI
+    -ultimaConsulta : LocalDateTime
+    -temperaturaConsultada : Temperatura
+    -intervaloDeConsultaEnHoras : Integer
+
+    -consultarClima() : void
+    -actualizarInformacionSiEsNecesario() : void
+    +getTemperatura : Temperatura
 }
 
 enum CategoriaDePrenda {

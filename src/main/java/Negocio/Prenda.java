@@ -18,4 +18,8 @@ public class Prenda {
     public CategoriaDePrenda categoriaDePrenda(){
         return tipoDePrenda.getCategoria();
     }
+
+    public Boolean sePuedeUsarConTemperatura(Temperatura temperatura){
+        return tipoDePrenda.sePuedeUsarConTemperatura(temperatura);
+    }
 }

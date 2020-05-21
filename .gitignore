@@ -32,3 +32,5 @@ target/
 /.project
 /.settings/org.eclipse.m2e.core.prefs
 /QueMePongo.iml
+/QueMePongo.ipr
+/QueMePongo.iws
